@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prediksi Nasabah Bank</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 50%;
+        margin: auto;
+        padding-top: 50px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type="number"],
+      select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      .message-box {
+        margin-top: 20px;
+        padding: 20px;
+        text-align: center;
+      }
+      .success {
+        background-color: #dff0d8;
+        color: #3c763d;
+      }
+      .danger {
+        background-color: #f2dede;
+        color: #a94442;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Prediksi Nasabah Bank yang Akan Keluar</h2>
+      <form action="/" method="post">
+        Credit Score: <input type="number" name="CreditScore" /><br />
+        Geography:
+        <select name="Geography">
+          <option value="France">France</option>
+          <option value="Germany">Germany</option>
+          <option value="Spain">Spain</option></select
+        ><br />
+        Gender:
+        <select name="Gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option></select
+        ><br />
+        Age: <input type="number" name="Age" /><br />
+        Balance: <input type="number" step="0.01" name="Balance" /><br />
+        Number of Products: <input type="number" name="NumOfProducts" /><br />
+        Is Active Member:
+        <select name="IsActiveMember">
+          <option value="1">Yes</option>
+          <option value="0">No</option></select
+        ><br />
+        Estimated Salary:
+        <input type="number" step="0.01" name="EstimatedSalary" /><br />
+        <input type="submit" value="Submit" />
+      </form>
+      {% if prediction is not none %}
+      <div
+        class="message-box {% if prediction == 1 %}danger{% else %}success{% endif %}"
+      >
+        {% if prediction == 1 %} Nasabah tersebut akan keluar. {% else %}
+        Nasabah tersebut akan menetap. {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
